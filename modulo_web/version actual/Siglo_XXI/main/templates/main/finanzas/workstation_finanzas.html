@@ -1,0 +1,104 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="{% static 'lib/Highcharts-9.3.2/highcharts.js' %}"></script>
+        <script src="{% static 'lib/Highcharts-9.3.2/modules/exporting.js' %}"></script>
+        <script src="{% static 'lib/Highcharts-9.3.2/modules/export-data.js' %}"></script>
+        <script src="{% static 'lib/Highcharts-9.3.2/modules/accessibility.js' %}"></script>
+
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <!--======== FAVICON ======-->
+        <link rel="shortcut icon" href="{% static 'main/img/icon.ico' %}">
+        <!-- Boostratp 4 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Siglo XXI</title>
+    </head>
+    <body>
+
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-chevron-up scrolltop__icon'></i>
+        </a>
+
+        <!--========== HEADER ==========-->
+         <header class="l-header" id="header">
+            <nav class="nav bd-container">
+                <a href="menu" class="nav__logo">Siglo XXI</a>
+
+                <div class="nav__menu" id="nav-menu">
+                
+                    <ul class="nav__list">
+                        
+                        
+                        <!--li class="nav__item"><a style="margin-left: -20px;" href="add_proveedor" class="nav__link active-link">Agregar Proveedor</a></li-->
+                        <li class="nav__item"><a  href="lista_proveedores" class="nav__link active-link">Proveedores</a></li>
+                        <!--li class="nav__item"><a style="margin-left: -20px;" href="AddFactura" class="nav__link active-link">Agregar Factura</a></li-->
+                        <li class="nav__item"><a  href="lista_facturas" class="nav__link active-link">Facturas</a></li>
+                        <li class="nav__item"><a  href="list_ordenes" class="nav__link active-link">Ordenes</a></li>
+                        
+                        
+
+                        
+
+                        
+                        <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                        <li class="nav__item"><div class="nav__link active-link"> | Usuario: {{request.user.first_name}} {{request.user.last_name}} |</div></li>
+                        
+                        <li class="nav__item"><a href="/logout" class="nav__link active-link">Cerrar Sesion</a></li>
+
+                        
+
+                        
+                        
+
+                    </ul>
+                    
+                        
+                    
+                </div>
+
+                        
+
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+       
+
+        <div class="boxForm" >
+            <!--img src="{% static 'main/img/Estadisticas.jpg' %}" style="width:1000px; height:600px; alt="img_workstation"-->
+            <div style="width: 10000px;">{% include "main/test/grafico.html" %}</div>    
+        </div>
+        
+        
+
+
+
+
+
+        <!--========== FOOTER ==========-->
+        <footer class="footer section bd-container">
+            <p class="footer__copy">&#169; 2021 Portafolio Web. Todos los derechos reservados</p>
+        </footer>
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'main/js/main.js' %}"></script>
+    </body>
+
+</html>

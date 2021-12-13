@@ -1,0 +1,129 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+        <!--======== FAVICON ======-->
+        <link rel="shortcut icon" href="{% static 'main/img/icon.ico' %}">
+
+        <!-- Boostratp 4 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Siglo XXI</title>
+        
+    
+</head>
+<body>
+
+    <div >
+        <div>
+            <div >
+                <div style="display: flex; flex-wrap:wrap;">
+                <div style="padding: 15px; margin-top:5px;">
+                        <div class="card">
+                            <div class="card-body text-center" >
+                                <h5 class="card-tittle text-center">Mesa 4</h5>
+                    {% if ordenes%}
+                    {% for O in ordenes %}
+                    {% if O.nombre_pedido == 'Mesa 4' %}
+                    
+                                <h6 class="card-tittle text-center" style="color: green;">Nuevo Pedido!</h6>
+                                
+                                <p class="card-text">{{ O.id_orden }}</p>
+                                <hr>
+                                <p class="card-text">{{ O.datefield }}</p>
+                                <div>
+                                    <form action="" method="post"> 
+                                        {% csrf_token %}
+                                        <div style="display: none;">
+                                        <h2>Buscar id:</h2>
+                                        <input type="text"  name="id_orde" id="id_orde" value="{{ O.id_orden }}">
+                                        </div>
+                                        <br> 
+                                        <input  style="background-color: #4CAF50; border-color: black; color: black;" type="submit"  value="Ver Detalle">
+                                        <!--button id="form" type="submit" class="cargar" >cargar</button-->
+                                    </form> 
+                                    
+                                    
+                                </div>
+                                <!--div> 
+                                    {% for DO in detalle_ordenes %}
+                                    <div>{{DO.detalle}}</div>
+                                    <div>{{DO.acumulado}}</div>
+                                    <div>{{DO.cantidad}}</div>
+                                    <div>{{DO.id_orde}}</div>
+                                    
+                                    {% endfor %}
+                                </div-->
+                                <a href="#" onclick="estadoOrden ({{ O.id_orden }})"><img src="{% static 'main/img/estado.png' %}" alt="lsto"></a>
+                                <script>
+                                    function estadoOrden(id_orden){
+                                        Swal.fire({
+                                            "title":"¿El Pedido fue entregado?",
+                                            "text":"Esta acción no se puede deshacer",
+                                            "icon":"warning",
+                                            "showCancelButton":true,
+                                            "cancelButtonText":"No, Cancelar",
+                                            "confirmButtonText":"Sí, Entregado",
+                                            "reverseButtons":true,
+                                            "confirmButtonColor":"#F44336",
+                                            "cancelButtonColor":"#2ECC71",
+                                        })
+                                        .then(function(result){
+                                            if(result.isConfirmed){
+                                                window.location.href = "/estado_orden/"+id_orden+"/"
+                                            }
+                                        })
+                                    }
+                                </script>
+                                {% endif %}
+                                {% endfor %}
+                                
+                               
+                               
+                                
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+                    
+                </div>
+                
+                {% endif %}
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--button id="mostrar" >mostrar</button-->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('#mesa').hide();
+
+            $('#mostrar').click(function(){
+                $('#mesa').show();
+                
+
+            });
+        });
+    </script>
+     
+</body>
+</html>

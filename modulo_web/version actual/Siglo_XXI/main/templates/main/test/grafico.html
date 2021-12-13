@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{% static 'lib/Highcharts-9.3.2/highcharts.js' %}"></script>
+    <script src="{% static 'lib/Highcharts-9.3.2/modules/exporting.js' %}"></script>
+    <script src="{% static 'lib/Highcharts-9.3.2/modules/export-data.js' %}"></script>
+    <script src="{% static 'lib/Highcharts-9.3.2/modules/accessibility.js' %}"></script>
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="container"></div>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript">
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'VENTAS DEL AÑO'
+                    },
+                    subtitle: {
+                        text: 'Siglo XXI'
+                    },
+                    xAxis: {
+                        categories: [
+                            'Enero',
+                            'Febrero',
+                            'Marzo',
+                            'Abril',
+                            'Mayo',
+                            'Junio',
+                            'Julio',
+                            'Agosto',
+                            'Septiembre',
+                            'Octubre',
+                            'Noviembre',
+                            'Diciembre'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Montos ($)'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.6f} $</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.1,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Mesa 1',
+                        data: [150.654, 240.300, 109.250, 187.265, 140.256, 258.260, 191.200, 180.500, 109.600, 150.600, 220.350, 180.800]
+
+                    }, {
+                        name: 'Mesa 2',
+                        data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+                    }, {
+                        name: 'Mesa 3',
+                        data: [170.654, 210.300, 119.250, 167.265, 120.256, 278.260, 301.200, 180.500, 209.600, 150.600, 220.350, 200.800]
+
+                    }, {
+                        name: 'Mesa 4',
+                        data: [170.654, 240.300, 199.250, 187.265, 140.256, 258.260, 221.200, 130.500, 130.600, 210.600, 320.350, 160.800]
+
+                    
+                    }, {
+                        name: 'Mesa 5',
+                        data: [150.654, 240.300, 139.250, 187.265, 140.256, 188.260, 291.200, 140.500, 129.600, 120.600, 220.350, 110.800]
+
+                    
+                    }, {
+                        name: 'Mesa 6',
+                        data: [150.654, 180.300, 139.250, 187.265, 160.256, 170.260, 291.200, 140.500, 189.600, 200.600, 205.350, 100.800]
+
+                    
+                    }, {
+                        name: 'Mesa 7',
+                        data: [200.654, 210.300, 199.250, 117.265, 170.256, 158.260, 191.200, 170.500, 149.600, 170.600, 180.350, 170.800]
+
+                    }, {
+                        name: 'Mesa 8',
+                        data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+                    }]
+                });
+            </script>
+</body>
+</html>

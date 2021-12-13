@@ -1,0 +1,10 @@
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\bin\Debug\Siglo_XXI.dll
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\bin\Debug\Siglo_XXI.pdb
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\obj\Debug\Siglo_XXI.csprojAssemblyReference.cache
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\obj\Debug\Siglo_XXI.csproj.CoreCompileInputs.cache
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\obj\Debug\Siglo_XXI.dll
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\obj\Debug\Siglo_XXI.pdb
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\bin\Debug\Main.exe
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\bin\Debug\Main.pdb
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\bin\Debug\Main.exe.config
+C:\Users\Duoc\Desktop\Portafolio\Modulo Desktop\.NET\Siglo_XXI\Siglo_XXI\obj\Debug\Siglo_XXI.csproj.CopyComplete

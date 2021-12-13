@@ -1,0 +1,75 @@
+{% load static%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+</head>
+<body style="background-color: #F0F0F0;">
+<div style="text-align: center; ">        
+    <form method="POST" enctype="multipart/form-data">
+        
+            {% csrf_token %}
+            
+            <label for="">Numero de Factura:</label>
+            
+            <input type="number" name="txtId" id="txtId" required minlength="3">
+            
+            <hr style="opacity: 0.10;">
+            <label for="">Fecha:</label>
+            
+            <input type="date" name="txtfecha" id="txtfecha" required >
+            
+            <hr style="opacity: 0.10;">
+            <label for="">Total Factura($):</label>
+            
+            <input type="number" name="txttotal" id="txttotal" required  >
+            
+            <hr style="opacity: 0.10;">
+
+            <label for="">Nombre Proveedor:</label>
+            
+            <select name="txtnom" id="txtnom" required>
+                <option value="">Seleccionar</option>
+                {% for p in Proveedores %}
+                <option value="{{p.nombre_proveedor}}">{{p.nombre_proveedor}}</option>
+                {% endfor %}
+            </select>
+
+            <hr style="opacity: 0.10;">
+
+            <label for="">Tipo Pago:</label>
+            
+            <select name="txttipo" id="txttipo" required>
+                <option value="">Seleccionar</option>
+                
+                <option value="Efectivo">Efectivo</option>
+                <option value="Debito">Debito</option>
+                <option value="Credito">Credito</option>
+                <option value="Trasferencia">Trasferencia</option>
+                
+            </select>
+            
+
+            <hr style="opacity: 0.10;">
+
+            <label for="">Documento:</label>
+            
+            <input type="file" name="media" id="media" required >
+            
+            <hr style="opacity: 0.10;">
+            <button style="background-color: white; border-color: black; color: black;" type="submit" class="btn btn-primary">Agregar</button>
+            <hr style="opacity: 0.10;">
+            <div style="color: darkred; font-size: 8mm; font-style: italic; text-decoration: underline;">
+              {{ mensaje }}  
+            </div>
+            
+        
+    </form>
+</div>    
+</body>
+</html>

@@ -1,0 +1,24 @@
+private void button_guardar_Click(object sender, EventArgs e)
+        {
+            MemoryStream ms = new MemoryStream();
+            pbImagen.Image.Save(ms, ImageFormat.Png);
+            byte[] aByte = ms.ToArray();
+
+            ora.Open();
+
+            try
+            {
+                OracleCommand comando = new OracleCommand("INSERT INTO MAIN_PRODUCTOSXXI (ID_PRODUCTO, NOMBRE, PRECIO, IMG_PRODUCTO) VALUES " +
+                    "('"+text_id.Text+"', '"+text_nombre.Text+"', '"+text_precio.Text+"', '"+pbImagen.Image+"')");
+                comando.Parameters.AddWithValue("IMG_PRODUCTO", aByte);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Imagen Guardada");
+                pbImagen.Image = null;
+
+            }
+            catch (OracleException ex)
+            {
+
+                MessageBox.Show("Error al guargar imagen" + ex.Message);
+            }
+        }

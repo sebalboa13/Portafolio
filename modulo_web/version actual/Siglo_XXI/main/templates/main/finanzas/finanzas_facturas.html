@@ -1,0 +1,155 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <!--======== FAVICON ======-->
+        <link rel="shortcut icon" href="{% static 'main/img/icon.ico' %}">
+        <!-- Boostratp 4 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Siglo XXI</title>
+    </head>
+    <body>
+
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-chevron-up scrolltop__icon'></i>
+        </a>
+
+        <!--========== HEADER ==========-->
+         <header class="l-header" id="header">
+            <nav class="nav bd-container">
+                <a href="workstation_finanzas" class="nav__logo">Siglo XXI</a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        
+                        
+                        <li class="nav__item"><a href="lista_proveedores" class="nav__link active-link">Proveedor</a></li>
+                        <li class="nav__item"><a href="add_proveedor" class="nav__link active-link">Agregar Proveedor</a></li>
+                        <li class="nav__item"><a  href="lista_facturas" class="nav__link active-link">Facturas</a></li>
+                        
+
+                        
+
+                        
+                        <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                        <li class="nav__item"><div class="nav__link active-link"> | Usuario: {{request.user.first_name}} {{request.user.last_name}} |</div></li>
+                        
+                        <li class="nav__item"><a href="/logout" class="nav__link active-link">Cerrar Sesion</a></li>
+
+                        
+
+                        
+                        
+
+                    </ul>
+                    
+                        
+                    
+                </div>
+
+                        
+
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <!--========== Fecha Actual ==============-->
+        <script>
+            window.onload = function(){
+            var fecha = new Date(); //Fecha actual
+            var mes = fecha.getMonth()+1; //obteniendo mes
+            var dia = fecha.getDate(); //obteniendo dia
+            var ano = fecha.getFullYear(); //obteniendo año
+            if(dia<10)
+                dia='0'+dia; //agrega cero si el menor de 10
+            if(mes<10)
+                mes='0'+mes //agrega cero si el menor de 10
+            document.getElementById('fecha').value=ano+"-"+mes+"-"+dia;
+            }
+        </script>
+       
+
+        <!--========== FORMULARIO ==========-->
+        
+            <div class="boxForm text-center" >
+                <form  method="post" enctype="multipart/form-data">
+                <h1 style="color: green;">Ingreso de Factura</h1>
+                <hr>
+                <div class="form-group">
+                    <label for="id_factura">Ingrese Numero de Serie</label>
+                    <input type="number" class="form-control" id="id_factura" name="id_factura" placeholder="Ingrese Numero de Serie" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Ingrese Fecha</label>
+                    <input type="date" class="form-control" id="fecha_fact" name="fecha_fact" placeholder="Ingrese Fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="total">Ingrese $total</label>
+                    <input type="number" class="form-control" id="total" name="total" placeholder="Ingrese monto" required>
+                </div>
+
+                <div>
+                    <label for="nom_proveedor">Ingrese el nombre del Proveedor</label>
+                    <select id="nom_proveedor" name="nom_proveedor" class="form-control" placeholder="Proveedor" required>
+                    {% for P in Proveedores %}
+                        <option>{{ P.nombre_proveedor }} </option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <label for="tipo_pago">Ingrese Tipo de Pago</label>
+                    <select id="tipo_pago" name="tipo_pago" class="form-control" required>
+                    {% for T in TipoPagoXxi %}
+                        <option>{{ T.tipo_pago }} </option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="media">Ingrese Documento</label>
+                    <input type="file" class="form-control" id="media" name="media" >
+                </div>
+
+                
+
+                <hr>
+
+                {% csrf_token %}
+                <button style="background-color: #4CAF50; border-color: black; color: black;" type="submit" class="btn btn-primary">Agregar</button>
+              </form>  
+            </div>
+        
+        
+
+
+
+
+
+        <!--========== FOOTER ==========-->
+        <footer class="footer section bd-container">
+            <p class="footer__copy">&#169; 2021 Portafolio Web. Todos los derechos reservados</p>
+        </footer>
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'main/js/main.js' %}"></script>
+    </body>
+
+</html>

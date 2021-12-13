@@ -1,0 +1,197 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/list.css' %}">
+        <!--link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"-->
+
+        <!--======== FAVICON ======-->
+        <link rel="shortcut icon" href="{% static 'main/img/icon.ico' %}">
+
+        <!-- Boostratp 4 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Siglo XXI</title>
+    </head>
+    <body>
+
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-chevron-up scrolltop__icon'></i>
+        </a>
+
+        <!--========== HEADER ==========-->
+         <header class="l-header" id="header">
+            <nav class="nav bd-container">
+                <a href="menu" class="nav__logo">Siglo XXI</a>
+                
+                
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        
+                        {% if perms.main.add_usercocina %}
+                        <li class="nav__item"><a href="resetas" class="nav__link active-link">Resetas</a></li>
+                        {% endif %}
+                        
+
+                        
+
+                        
+                        <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                        <li class="nav__item"><div class="nav__link active-link"> | Usuario: {{request.user.first_name}} {{request.user.last_name}} |</div></li>
+                        
+                        <li class="nav__item"><a href="/logout" class="nav__link active-link">Cerrar Sesion</a></li>
+
+                        
+
+                        
+                        
+
+                    </ul>
+                    
+                        
+                    
+                </div>
+
+                        
+
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+       
+
+    <body>
+    <br>
+    <br>
+    <br>
+    
+        <div> {{ mensaje }} </div>
+        
+        <div style="padding: 15px; margin-top:5px;">
+        <div class="card">
+        <div class="card-body text-center">
+            <h1 style="color: green;" class="text-center">Detalle de la Orden:</h1>
+            
+            <table class="table-list text-center " style="margin-top: -0cm;">
+                <div class="col-xs-12 col-sm-6 col-md-8 col-l-8">
+                
+                <tr>
+                    <th>PLATOS</th>
+                    <th>CANTIDAD</th>
+                    <th>MESA</th>
+                </tr>
+                {% for D in detalle_ordenes %}
+                <tr>
+                    <td style="color: green;">{{D.detalle}}</td>
+                    <td>{{D.cantidad}}</td>
+                    <td>{{D.nombre_pedido}}</td>
+                </tr>
+                {% endfor %}
+                </div>                        
+            </table>
+        </div>
+        </div>
+        </div>
+
+
+        <table>
+        <tr>
+            <th class="columna"></th>
+            <th class="columna"></th>
+            <th class="columna"></th>
+            <th class="columna"></th>
+            <th class="columna"></th>
+            <th class="columna"></th>
+            <th class="columna"></th>
+            
+            
+        </tr>
+        
+       <tr>  
+           <td> 
+            <div>{% include "main/cocina/mesas/mesa_0.html" %}</div>    
+           </td>
+            <td> 
+           <div>{% include "main/cocina/mesas/mesa_1.html" %}</div>
+           </td>
+            <td> 
+           <div>{% include "main/cocina/mesas/mesa_2.html" %}</div>
+           </td>
+            <td> 
+           <div>{% include "main/cocina/mesas/mesa_3.html" %}</div>
+           </td>
+            <td> 
+           <div>{% include "main/cocina/mesas/mesa_4.html" %}</div>
+           </td>
+            <td> 
+           <div>{% include "main/cocina/mesas/mesa_5.html" %}</div>
+           </td>
+            <td> 
+           <div>{% include "main/cocina/mesas/mesa_6.html" %}</div>
+           </td>
+            <td> 
+           <div>{% include "main/cocina/mesas/mesa_7.html" %}</div>
+           </td>
+            <td> 
+           <div>{% include "main/cocina/mesas/mesa_8.html" %}</div>
+           </td>
+           
+       </tr>
+         
+        </table>
+      
+        
+        <!--//Función actualizar-->
+        <script type="text/javascript">
+            function actualizar(){location.reload(true);}
+        //Función para actualizar cada 5 segundos(5000 milisegundos)
+                setInterval("actualizar()",10000);
+        </script>
+        
+
+        {% if messages %}
+                    {% for m in messages %}
+                    <script>
+                        Swal.fire({
+                            "title":"Proceso Exitoso",
+                            "text": "{{m}}",
+                            "icon":"success"
+                        })
+                    </script>
+                    {% endfor %}
+        {% endif %}
+
+        
+        
+
+
+
+
+
+        <!--========== FOOTER ==========-->
+        <footer class="footer section bd-container">
+            <p class="footer__copy">&#169; 2021 Portafolio Web. Todos los derechos reservados</p>
+        </footer>
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'main/js/main.js' %}"></script>
+    </body>
+
+</html>

@@ -1,0 +1,9 @@
+python -m pip install cx_Oracle --upgrade --user
+
+pip install cx_Oracle
+
+pip install psycopg2
+
+--Para pasar las tablas de una bd a un models
+python manage.py inspectdb > models.py
+

@@ -1,0 +1,92 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<div class="alert alert-primary" role="alert"  style="background-color: #F7F9F9; border-color: #4CAF50; background-color: #F7F9F9;">
+<table class="table table-bordered">
+    
+    <thead>
+        <a name="carrito"></a>
+        
+        <tr>
+            <th scope="row" colspan="3" class="text-center">CARRITO</th>
+        </tr>
+        <tr>
+            <th scope="row" colspan="3" class="text-center" style="color: darkred; font-size: 8mm; font-style: italic; text-decoration: underline;" >{{ mensaje }}</th>
+        </tr>
+
+        <tr>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">PRECIO</th>
+            <th scope="col">CANTIDAD</th>
+        </tr>
+    </thead>
+
+<tbody >
+<form method="POST"> 
+{% if request.session.carrito.items %}
+{% for key, value in request.session.carrito.items %}
+    <tr >
+        <td>{{value.nombre}}</td>
+        <td>{{value.acumulado}}</td>
+        <td>{{value.cantidad}}
+            <a href="{% url 'Add' value.id_producto %}#carrito" class="badge btn-dark badge-dark">+</a>
+            <a href="{% url 'Sub' value.id_producto %}#carrito" class="badge btn-dark badge-dark">-</a>
+        </td>
+    </tr>
+{% endfor %}
+{% else %}
+<tr>
+    <td style="background-color: #F7F9F9; " colspan="3">
+        <div class="alert alert-danger text-center" style="background-color: #4CAF50; color: black; border-color: black; "> Sin Productos</div>
+    </td>
+</tr>
+{% endif %}
+    <tr>
+        <th scope="row">Total:</th>
+        <th colspan="2">$ {{total_carrito}}</th>
+    </tr>
+</tbody>
+</table>
+<hr>
+</div>
+<div class="row text-center">
+    <div class="col-6"><a href="{% url 'CLS' %}#carrito" class="btn btn-danger">Limpiar Carrito</a></div>
+    <div class="col-6"><button type="submit" class="btn btn-success">Pedir</button></div>
+    {% csrf_token %}
+    <!--div class="col-6"><button style="background-color: #4CAF50; border-color: black; color: black;" type="submit" class="">Agregar</button></div-->
+    
+
+</div>
+<br>
+
+        <script>
+            window.onload = function(){
+            var fecha = new Date(); //Fecha actual
+            var mes = fecha.getMonth()+1; //obteniendo mes
+            var dia = fecha.getDate(); //obteniendo dia
+            var ano = fecha.getFullYear(); //obteniendo año
+            if(dia<10)
+                dia='0'+dia; //agrega cero si el menor de 10
+            if(mes<10)
+                mes='0'+mes //agrega cero si el menor de 10
+            document.getElementById('date').value=ano+"-"+mes+"-"+dia;
+            }
+        </script>
+    <div style="display: none;">
+        <input type="text" value="{{request.user.first_name}} {{request.user.last_name}}" name="txtnombre">
+    </div>
+    <div style="display: none;">
+        <input type="date"  name="date" id="date">
+    </div>
+
+      
+</form>
+
+
+
+    
+
+    
+    
+
+
+    
+

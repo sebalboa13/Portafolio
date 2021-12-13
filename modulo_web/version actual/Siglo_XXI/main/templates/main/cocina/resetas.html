@@ -1,0 +1,147 @@
+{% load static%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="{% static 'main/js/stock.js' %}"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/list.css' %}">
+        
+        <!--======== FAVICON ======-->
+        <link rel="shortcut icon" href="{% static 'main/img/icon.ico' %}">
+        <!-- Boostratp 4 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Siglo XXI</title>
+    </head>
+    <body>
+
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-chevron-up scrolltop__icon'></i>
+        </a>
+
+        <!--========== HEADER ==========-->
+        <header class="l-header" id="header">
+            <nav class="nav bd-container">
+                <a href="menu" class="nav__logo">Siglo XXI</a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        
+                        
+                        <li class="nav__item"><a href="cocina" class="nav__link active-link">Cocina</a></li>
+                        
+                        
+
+                        
+
+                        
+                        <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                        <li class="nav__item"><div class="nav__link active-link"> | Usuario: {{request.user.first_name}} {{request.user.last_name}} |</div></li>
+                        
+                        <li class="nav__item"><a href="/logout" class="nav__link active-link">Cerrar Sesion</a></li>
+
+                        
+                    </ul>                   
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+                <br>
+             
+        <!--========== js-cantidad ==========-->
+        
+
+
+        <!--========== FORMULARIO ==========-->
+       
+            <div class="" >
+            <div class="display_table" >
+
+                <table class="table-list text-center">
+                <hr>
+                    <div class="table-list text-center">
+                    <form  action="" method="post"> {% csrf_token %}
+                        <h2>Buscar Reseta:</h2>
+                        <input type="text" name="nombre" id="nombre">
+                        <br>
+                        
+                        <input style="background-color: #4CAF50; border-color: black; color: black;" type="submit" value="CARGAR">
+                    </form>
+                    <tr >
+                        <!---th class="columna">NÚMERO DE SERIE</th-->
+                        <th class="columna">NOMBRE PLATO</th>
+                        <th class="columna">RESETAS</th>
+                        
+                        
+                        <!--th class="columna"></th>
+                        <th class="columna"></th-->
+                    </tr>
+
+                    {% for P in ProductosXxi %}
+                    <tr >
+                        <!--td >{{ P.id_proveedor | title }}</td-->
+                        <td>{{ P.nombre | title }}</td>
+                        <td >{{ P.reseta | title }}</th>
+                        
+                        
+                        
+                    </tr>
+                    {% endfor %}
+                    {{mensaje}}
+                </table>
+                {% if messages %}
+                    {% for m in messages %}
+                    <script>
+                        Swal.fire({
+                            "title":"Felicitaciones",
+                            "text": "{{m}}",
+                            "icon":"success"
+                        })
+                    </script>
+                    {% endfor %}
+                {% endif %}
+
+
+
+
+
+                {% csrf_token %}
+            </div>
+            </div>
+            
+            <!--div >
+                <nav class="nav bd-container">
+                    <div class="nav__menu" id="nav-menu">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a href="ingrediente" > <button> Agregar </button></a></li>
+                        </ul>
+                    </div>
+                </nav>
+           </div-->
+            
+        <!--========== FOOTER ==========-->
+        <footer class="footer section bd-container">
+            <p class="footer__copy">&#169; 2021 Portafolio Web. Todos los derechos reservados</p>
+        </footer>
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'main/js/main.js' %}"></script>
+        
+    </body>
+
+</html>

@@ -1,0 +1,153 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+        <!--======== FAVICON ======-->
+        <link rel="shortcut icon" href="{% static 'main/img/icon.ico' %}">
+
+        <!-- Boostratp 4 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Siglo XXI</title>
+    </head>
+    <body>
+
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-chevron-up scrolltop__icon'></i>
+        </a>
+
+        <!--========== HEADER ==========-->
+         <header class="l-header" id="header">
+            <nav class="nav bd-container">
+                <a href="menu" class="nav__logo">Siglo XXI</a>
+                
+                
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        {% if perms.main.add_userbodega %}
+                        <li class="nav__item"><a href="stock" class="nav__link active-link">Bodega</a></li>
+                        {% endif %}
+                        {% if perms.main.add_userfinanzas %}
+                        <li class="nav__item"><a href="workstation_finanzas" class="nav__link active-link">Finanzas</a></li>
+                        {% endif %}
+                        {% if perms.main.add_usercocina %}
+                        <li class="nav__item"><a href="cocina" class="nav__link active-link">Cocina</a></li>
+                        {% endif %}
+                        
+
+                        
+
+                        
+                        <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                        <li class="nav__item"><div class="nav__link active-link"> | Usuario: {{request.user.first_name}} {{request.user.last_name}} |</div></li>
+                        
+                        <li class="nav__item"><a href="/logout" class="nav__link active-link">Cerrar Sesion</a></li>
+
+                        
+
+                        
+                        
+
+                    </ul>
+                    
+                        
+                    
+                </div>
+
+                        
+
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+       <hr>
+       <br>
+       <br>
+       
+
+        <!--========== Listado de Productos ==========-->
+
+       {% if perms.main.add_usercliente %}
+        
+        <div >
+            <div>
+                <div >
+                    <div style="display: flex; flex-wrap:wrap;">
+                        {% for producto in ProductosXxi %}
+                        <div style="padding: 15px; margin-top:5px;">
+                            <div class="card">
+                                <div class="card-body text-center" >
+                                    <h5 class="card-tittle text-center">{{ producto.nombre }}</h5>
+                                    <img src="{{ producto.img_producto.url }}" style="width:220px; height:205px;">
+                                    <p class="card-text">{{ producto.tipo_producto_xxi_id_tipo_producto }}</p>
+                                    <p class="card-text">{{ producto.precio }}</p>
+                                    <a style="background-color: #4CAF50; color: black; border-color: black;" href="{% url 'Add' producto.id_producto %}#carrito" class="btn btn-primary">Agregar al carrito </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <a name="carrito"></a>
+        <br>
+        <br>
+        <br>
+       <div style="width:100%; padding: 10px;">
+            {% include "main/carrito/carrito.html" %}
+       </div>
+        
+        {% endif %}
+
+        {% if perms.main.add_userfinanzas %}
+        <div class="boxForm">
+            <img style="width: 900px;" src="{% static 'main/img/finanzas.jpg' %}" alt="img_workstation">
+        </div>
+        {% endif %}
+        {% if perms.main.add_userbodega %}
+        <div class="boxForm">
+            <img style="width: 900px;" src="{% static 'main/img/bodega.jpg' %}" alt="img_workstation">
+        </div>
+        {% endif %}
+        {% if perms.main.add_usercocina %}
+        <div class="boxForm">
+            <img style="width: 900px;" src="{% static 'main/img/cocina.jpg' %}" alt="img_workstation">
+        </div>
+        {% endif %}
+
+
+
+        <!--========== FOOTER ==========-->
+        <footer class="footer section bd-container">
+            <p class="footer__copy">&#169; 2021 Portafolio Web. Todos los derechos reservados</p>
+        </footer>
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'main/js/main.js' %}"></script>
+    </body>
+
+</html>

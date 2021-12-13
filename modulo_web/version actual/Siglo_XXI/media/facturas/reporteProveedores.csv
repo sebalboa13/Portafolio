@@ -1,0 +1,4 @@
+NOMBRE_PROVEEDOR,TELEFONO,CORREO,NOMBRE_CONTACTO,REGION,TITULAR__CUENTA,NOMBRE_BANCO,RUT,NUMERO_CUENTA,TIPO_CUENTA
+Campo Lindo,934825874,campo@lindo.com,Juan Lindo,Araucanía,Juan Lindo,Banco Santander,103528552,2588845669,Efectivo
+Fruna,18948415,fruna@gmail.com,Don fruna,Metropolitana,Don Fruna,Banco Estado,103107229,10310722,Rut
+Coca Cola,935842184,coca@cola.com,Jose Jara,Maule,Coca Cola,Banco Chile,102258330,445288824,Corriente

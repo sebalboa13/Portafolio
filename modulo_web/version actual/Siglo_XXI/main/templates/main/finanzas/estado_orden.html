@@ -1,0 +1,14 @@
+{% load static%}
+<div style="display: none;">
+<form method="post">
+    <input type="text" name="estado" id="estado" value="Finalizado">
+    {% csrf_token %}
+    <button type="submit" class="cargar">go</button>
+</form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".cargar").click();
+        });
+    </script>

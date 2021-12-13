@@ -1,0 +1,32 @@
+/*Align the title to the center of the page*/
+.table-list{
+	font-size: 20px;
+	text-align: center;
+	width: 95%;
+	margin: auto;
+	text-align: center;
+    margin-top: 2cm;
+}
+
+/*Make alternating colors for the table rows*/
+.table-list tr:nth-child(odd){
+	background: #D7DBDD
+}
+
+.table-list tr:nth-child(even){
+	background: #F2F3F4
+}
+
+.th-list {
+  background-color:green;
+  color: green;
+}
+
+.display_table{
+	border-bottom-right-radius: 20px;
+	/*border-bottom-left-radius: 20px;*/
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 20px;
+	
+}
